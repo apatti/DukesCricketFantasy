@@ -1,0 +1,36 @@
+{
+    "dukesipl": {
+        "awscloudformation": {
+            "AuthRoleName": "dukesiplfantasy-20190318202633-authRole",
+            "UnauthRoleArn": "arn:aws:iam::923271942752:role/dukesiplfantasy-20190318202633-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::923271942752:role/dukesiplfantasy-20190318202633-authRole",
+            "Region": "us-west-1",
+            "DeploymentBucketName": "dukesiplfantasy-20190318202633-deployment",
+            "UnauthRoleName": "dukesiplfantasy-20190318202633-unauthRole",
+            "StackName": "dukesiplfantasy-20190318202633",
+            "StackId": "arn:aws:cloudformation:us-west-1:923271942752:stack/dukesiplfantasy-20190318202633/cbee10f0-49f6-11e9-a6e0-50fae8e994f2"
+        },
+        "categories": {
+            "auth": {
+                "cognito156eacd9": {}
+            }
+        }
+    },
+    "iplfantasy": {
+        "awscloudformation": {
+            "AuthRoleName": "dukesiplfantasy-20190318221259-authRole",
+            "UnauthRoleArn": "arn:aws:iam::923271942752:role/dukesiplfantasy-20190318221259-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::923271942752:role/dukesiplfantasy-20190318221259-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "dukesiplfantasy-20190318221259-deployment",
+            "UnauthRoleName": "dukesiplfantasy-20190318221259-unauthRole",
+            "StackName": "dukesiplfantasy-20190318221259",
+            "StackId": "arn:aws:cloudformation:us-west-2:923271942752:stack/dukesiplfantasy-20190318221259/a9e611b0-4a05-11e9-9eaa-0a966a7c674c"
+        },
+        "categories": {
+            "auth": {
+                "cognito156eacd9": {}
+            }
+        }
+    }
+}

@@ -1,0 +1,1522 @@
+[
+ {
+   "Player": 1,
+   "Name": "Suresh Raina",
+   "Base": 11,
+   "Salary": 110000,
+   "Team": "CSK",
+   "Category": "Bat"
+ },
+ {
+   "Player": 2,
+   "Name": "Virat Kohli",
+   "Base": 11,
+   "Salary": 110000,
+   "Team": "RCB",
+   "Category": "Bat"
+ },
+ {
+   "Player": 3,
+   "Name": "Rohit Sharma",
+   "Base": 11,
+   "Salary": 110000,
+   "Team": "MI",
+   "Category": "Bat"
+ },
+ {
+   "Player": 4,
+   "Name": "Robin Uthappa",
+   "Base": 11,
+   "Salary": 110000,
+   "Team": "KKR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 5,
+   "Name": "Chris Gayle",
+   "Base": 11,
+   "Salary": 110000,
+   "Team": "KXIP",
+   "Category": "Bat"
+ },
+ {
+   "Player": 6,
+   "Name": "Shikhar Dhawan",
+   "Base": 11,
+   "Salary": 110000,
+   "Team": "DEC",
+   "Category": "Bat"
+ },
+ {
+   "Player": 7,
+   "Name": "David Warner",
+   "Base": 11,
+   "Salary": 110000,
+   "Team": "SRH",
+   "Category": "Bat"
+ },
+ {
+   "Player": 8,
+   "Name": "Ben Stokes",
+   "Base": 11,
+   "Salary": 110000,
+   "Team": "RR",
+   "Category": "AR"
+ },
+ {
+   "Player": 9,
+   "Name": "AB de Villiers",
+   "Base": 10,
+   "Salary": 100000,
+   "Team": "RCB",
+   "Category": "Bat"
+ },
+ {
+   "Player": 10,
+   "Name": "Kane Williamson",
+   "Base": 10,
+   "Salary": 100000,
+   "Team": "SRH",
+   "Category": "Bat"
+ },
+ {
+   "Player": 11,
+   "Name": "Shreyas Iyer",
+   "Base": 10,
+   "Salary": 100000,
+   "Team": "DEC",
+   "Category": "Bat"
+ },
+ {
+   "Player": 12,
+   "Name": "Andre Russell",
+   "Base": 10,
+   "Salary": 100000,
+   "Team": "KKR",
+   "Category": "AR"
+ },
+ {
+   "Player": 13,
+   "Name": "Dwayne Bravo",
+   "Base": 10,
+   "Salary": 100000,
+   "Team": "CSK",
+   "Category": "AR"
+ },
+ {
+   "Player": 14,
+   "Name": "Quinton de Kock",
+   "Base": 10,
+   "Salary": 100000,
+   "Team": "MI",
+   "Category": "WK"
+ },
+ {
+   "Player": 15,
+   "Name": "MS Dhoni",
+   "Base": 10,
+   "Salary": 100000,
+   "Team": "CSK",
+   "Category": "WK"
+ },
+ {
+   "Player": 16,
+   "Name": "Jos Buttler",
+   "Base": 10,
+   "Salary": 100000,
+   "Team": "RR",
+   "Category": "WK"
+ },
+ {
+   "Player": 17,
+   "Name": "Lokesh Rahul",
+   "Base": 10,
+   "Salary": 100000,
+   "Team": "KXIP",
+   "Category": "WK"
+ },
+ {
+   "Player": 18,
+   "Name": "Rishabh Pant",
+   "Base": 10,
+   "Salary": 100000,
+   "Team": "DEC",
+   "Category": "WK"
+ },
+ {
+   "Player": 19,
+   "Name": "Ajinkya Rahane",
+   "Base": 9.5,
+   "Salary": 95000,
+   "Team": "RR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 20,
+   "Name": "Colin Munro",
+   "Base": 9.5,
+   "Salary": 95000,
+   "Team": "DEC",
+   "Category": "Bat"
+ },
+ {
+   "Player": 21,
+   "Name": "Jonny Bairstow",
+   "Base": 9.5,
+   "Salary": 95000,
+   "Team": "SRH",
+   "Category": "Bat"
+ },
+ {
+   "Player": 22,
+   "Name": "Kieron Pollard",
+   "Base": 9.5,
+   "Salary": 95000,
+   "Team": "MI",
+   "Category": "Bat"
+ },
+ {
+   "Player": 23,
+   "Name": "Faf du Plessis",
+   "Base": 9.5,
+   "Salary": 95000,
+   "Team": "CSK",
+   "Category": "Bat"
+ },
+ {
+   "Player": 24,
+   "Name": "Shimron Hetmyer",
+   "Base": 9.5,
+   "Salary": 95000,
+   "Team": "RCB",
+   "Category": "Bat"
+ },
+ {
+   "Player": 25,
+   "Name": "Dinesh Karthik",
+   "Base": 9.5,
+   "Salary": 95000,
+   "Team": "KKR",
+   "Category": "WK"
+ },
+ {
+   "Player": 26,
+   "Name": "Chris Lynn",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "KKR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 27,
+   "Name": "Yuvraj Singh",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "MI",
+   "Category": "Bat"
+ },
+ {
+   "Player": 28,
+   "Name": "Yusuf Pathan",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "SRH",
+   "Category": "Bat"
+ },
+ {
+   "Player": 29,
+   "Name": "Martin Guptill",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "SRH",
+   "Category": "Bat"
+ },
+ {
+   "Player": 30,
+   "Name": "Steven Smith",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "RR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 31,
+   "Name": "Sanju Samson",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "RR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 32,
+   "Name": "Ambati Rayudu",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "CSK",
+   "Category": "Bat"
+ },
+ {
+   "Player": 33,
+   "Name": "Manish Pandey",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "SRH",
+   "Category": "Bat"
+ },
+ {
+   "Player": 34,
+   "Name": "Colin Ingram",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "DEC",
+   "Category": "Bat"
+ },
+ {
+   "Player": 35,
+   "Name": "David Miller",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "KXIP",
+   "Category": "Bat"
+ },
+ {
+   "Player": 36,
+   "Name": "Evin Lewis",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "MI",
+   "Category": "Bat"
+ },
+ {
+   "Player": 37,
+   "Name": "Murali Vijay",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "CSK",
+   "Category": "Bat"
+ },
+ {
+   "Player": 38,
+   "Name": "Jasprit Bumrah",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "MI",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 39,
+   "Name": "Bhuvneshwar Kumar",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "SRH",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 40,
+   "Name": "Kuldeep Yadav",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "KKR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 41,
+   "Name": "Rashid Khan",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "SRH",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 42,
+   "Name": "Ravichandran Ashwin",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "KXIP",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 43,
+   "Name": "Sunil Narine",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "KKR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 44,
+   "Name": "Trent Boult",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "DEC",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 45,
+   "Name": "Kagiso Rabada",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "DEC",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 46,
+   "Name": "Yuzvendra Chahal",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "RCB",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 47,
+   "Name": "Imran Tahir",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "CSK",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 48,
+   "Name": "Amit Mishra",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "DEC",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 49,
+   "Name": "Hardik Pandya",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "MI",
+   "Category": "AR"
+ },
+ {
+   "Player": 50,
+   "Name": "Ravindra Jadeja",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "CSK",
+   "Category": "AR"
+ },
+ {
+   "Player": 51,
+   "Name": "Shane Watson",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "CSK",
+   "Category": "AR"
+ },
+ {
+   "Player": 52,
+   "Name": "Mohammad Nabi",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "SRH",
+   "Category": "AR"
+ },
+ {
+   "Player": 53,
+   "Name": "Shakib Al Hasan",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "SRH",
+   "Category": "AR"
+ },
+ {
+   "Player": 54,
+   "Name": "Marcus Stoinis",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "RCB",
+   "Category": "AR"
+ },
+ {
+   "Player": 55,
+   "Name": "Moises Henriques",
+   "Base": 9,
+   "Salary": 90000,
+   "Team": "KXIP",
+   "Category": "AR"
+ },
+ {
+   "Player": 56,
+   "Name": "Suryakumar Yadav",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "MI",
+   "Category": "Bat"
+ },
+ {
+   "Player": 57,
+   "Name": "Mayank Agarwal",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KXIP",
+   "Category": "Bat"
+ },
+ {
+   "Player": 58,
+   "Name": "Ashton Turner",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 59,
+   "Name": "Prithvi Shaw",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "DEC",
+   "Category": "Bat"
+ },
+ {
+   "Player": 60,
+   "Name": "Shubman Gill",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KKR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 61,
+   "Name": "Karun Nair",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KXIP",
+   "Category": "Bat"
+ },
+ {
+   "Player": 62,
+   "Name": "Manan Vohra",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 63,
+   "Name": "Nicholas Pooran",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KXIP",
+   "Category": "Bat"
+ },
+ {
+   "Player": 64,
+   "Name": "Mandeep Singh",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KXIP",
+   "Category": "Bat"
+ },
+ {
+   "Player": 65,
+   "Name": "Nitish Rana",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KKR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 66,
+   "Name": "Rahul Tripathi",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 67,
+   "Name": "Sam Billings",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "CSK",
+   "Category": "Bat"
+ },
+ {
+   "Player": 68,
+   "Name": "Hanuma Vihari",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "DEC",
+   "Category": "Bat"
+ },
+ {
+   "Player": 69,
+   "Name": "Dhawal Kulkarni",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 70,
+   "Name": "Sandeep Sharma",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "SRH",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 71,
+   "Name": "Jason Behrendorff",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "MI",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 72,
+   "Name": "Harbhajan Singh",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "CSK",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 73,
+   "Name": "Mohammed Shami",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KXIP",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 74,
+   "Name": "Mohit Sharma",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "CSK",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 75,
+   "Name": "Billy Stanlake",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "SRH",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 76,
+   "Name": "Umesh Yadav",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RCB",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 77,
+   "Name": "Mayank Markande",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "MI",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 78,
+   "Name": "Piyush Chawla",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KKR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 79,
+   "Name": "Mitchell McClenaghan",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "MI",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 80,
+   "Name": "Shreyas Gopal",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 81,
+   "Name": "Varun Aaron",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 82,
+   "Name": "Nathan Coulter-Nile",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RCB",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 83,
+   "Name": "Mujeeb Zadran",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KXIP",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 84,
+   "Name": "Lasith Malinga",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "MI",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 85,
+   "Name": "Jaydev Unadkat",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 86,
+   "Name": "Ish Sodhi",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 87,
+   "Name": "Tim Southee",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RCB",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 88,
+   "Name": "Adam Milne",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "MI",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 89,
+   "Name": "Andrew Tye",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KXIP",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 90,
+   "Name": "Washington Sundar",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RCB",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 91,
+   "Name": "Sandeep Lamichhane",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "DEC",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 92,
+   "Name": "Siddarth Kaul",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "SRH",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 93,
+   "Name": "Harry Gurney",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KKR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 94,
+   "Name": "Shardul Thakur",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "CSK",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 95,
+   "Name": "Oshane Thomas",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 96,
+   "Name": "Ishant Sharma",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "DEC",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 97,
+   "Name": "Lockie Ferguson",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KKR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 98,
+   "Name": "Lungi Ngidi",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "CSK",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 99,
+   "Name": "Ben Cutting",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "MI",
+   "Category": "AR"
+ },
+ {
+   "Player": 100,
+   "Name": "Moeen Ali",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RCB",
+   "Category": "AR"
+ },
+ {
+   "Player": 101,
+   "Name": "Colin de Grandhomme",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RCB",
+   "Category": "AR"
+ },
+ {
+   "Player": 102,
+   "Name": "Jofra Archer",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RR",
+   "Category": "AR"
+ },
+ {
+   "Player": 103,
+   "Name": "Vijay Shankar",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "SRH",
+   "Category": "AR"
+ },
+ {
+   "Player": 104,
+   "Name": "Krunal Pandya",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "MI",
+   "Category": "AR"
+ },
+ {
+   "Player": 105,
+   "Name": "Chris Morris",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "DEC",
+   "Category": "AR"
+ },
+ {
+   "Player": 106,
+   "Name": "Mitchell Santner",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "CSK",
+   "Category": "AR"
+ },
+ {
+   "Player": 107,
+   "Name": "Carlos Brathwaite",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KKR",
+   "Category": "AR"
+ },
+ {
+   "Player": 108,
+   "Name": "Stuart Binny",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RR",
+   "Category": "AR"
+ },
+ {
+   "Player": 109,
+   "Name": "David Willey",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "CSK",
+   "Category": "AR"
+ },
+ {
+   "Player": 110,
+   "Name": "Deepak Hooda",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "SRH",
+   "Category": "AR"
+ },
+ {
+   "Player": 111,
+   "Name": "Joe Denly",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KKR",
+   "Category": "AR"
+ },
+ {
+   "Player": 112,
+   "Name": "Kedar Jadhav",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "CSK",
+   "Category": "AR"
+ },
+ {
+   "Player": 113,
+   "Name": "Keemo Paul",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "DEC",
+   "Category": "AR"
+ },
+ {
+   "Player": 114,
+   "Name": "Krishnappa Gowtham",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RR",
+   "Category": "AR"
+ },
+ {
+   "Player": 115,
+   "Name": "Shivam Mavi",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KKR",
+   "Category": "AR"
+ },
+ {
+   "Player": 116,
+   "Name": "Sam Curran",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "KXIP",
+   "Category": "AR"
+ },
+ {
+   "Player": 117,
+   "Name": "Axar Patel",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "DEC",
+   "Category": "AR"
+ },
+ {
+   "Player": 118,
+   "Name": "Parthiv Patel",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RCB",
+   "Category": "WK"
+ },
+ {
+   "Player": 119,
+   "Name": "Aditya Tare",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "MI",
+   "Category": "WK"
+ },
+ {
+   "Player": 120,
+   "Name": "Heinrich Klaasen",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RCB",
+   "Category": "WK"
+ },
+ {
+   "Player": 121,
+   "Name": "Ishan Kishan",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "MI",
+   "Category": "WK"
+ },
+ {
+   "Player": 122,
+   "Name": "Wriddhiman Saha",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "SRH",
+   "Category": "WK"
+ },
+ {
+   "Player": 123,
+   "Name": "Akshdeep Nath",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RCB",
+   "Category": "Bat"
+ },
+ {
+   "Player": 124,
+   "Name": "Anmolpreet Singh",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "MI",
+   "Category": "Bat"
+ },
+ {
+   "Player": 125,
+   "Name": "Sarfaraz Khan",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KXIP",
+   "Category": "Bat"
+ },
+ {
+   "Player": 126,
+   "Name": "Manjot Kalra",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "DEC",
+   "Category": "Bat"
+ },
+ {
+   "Player": 127,
+   "Name": "Siddhesh Lad",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "MI",
+   "Category": "Bat"
+ },
+ {
+   "Player": 128,
+   "Name": "Chaitanya Bishnoi",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "CSK",
+   "Category": "Bat"
+ },
+ {
+   "Player": 129,
+   "Name": "Shashank Singh",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 130,
+   "Name": "Milind Kumar",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RCB",
+   "Category": "Bat"
+ },
+ {
+   "Player": 131,
+   "Name": "Ricky Bhui",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "SRH",
+   "Category": "Bat"
+ },
+ {
+   "Player": 132,
+   "Name": "Sherfane Rutherford",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "DEC",
+   "Category": "Bat"
+ },
+ {
+   "Player": 133,
+   "Name": "Himmat Singh",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RCB",
+   "Category": "Bat"
+ },
+ {
+   "Player": 134,
+   "Name": "Rinku Singh",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KKR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 135,
+   "Name": "Liam Livingstone",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 136,
+   "Name": "Riyan Parag",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 137,
+   "Name": "Shivam Dube",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RCB",
+   "Category": "Bat"
+ },
+ {
+   "Player": 138,
+   "Name": "Devdutt Padikkal",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RCB",
+   "Category": "Bat"
+ },
+ {
+   "Player": 139,
+   "Name": "Prashant Chopra",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RR",
+   "Category": "Bat"
+ },
+ {
+   "Player": 140,
+   "Name": "Ruturaj Gaikwad",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "CSK",
+   "Category": "Bat"
+ },
+ {
+   "Player": 141,
+   "Name": "Dhruv Shorey",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "CSK",
+   "Category": "Bat"
+ },
+ {
+   "Player": 142,
+   "Name": "Narayan Jagadeesan",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "CSK",
+   "Category": "Bat"
+ },
+ {
+   "Player": 143,
+   "Name": "Gurkeerat Singh",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RCB",
+   "Category": "Bat"
+ },
+ {
+   "Player": 144,
+   "Name": "Karn Sharma",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "CSK",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 145,
+   "Name": "Mohammed Siraj",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RCB",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 146,
+   "Name": "Agnivesh Ayachi",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KXIP",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 147,
+   "Name": "Ankit Rajpoot",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KXIP",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 148,
+   "Name": "Prithvi Raj Yarra",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KKR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 149,
+   "Name": "Bandaru Ayyappa",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "DEC",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 150,
+   "Name": "Hardus Vilojen",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KXIP",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 151,
+   "Name": "Kamlesh Nagarkoti",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KKR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 152,
+   "Name": "Rahul Chahar",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "MI",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 153,
+   "Name": "Barinder Sran",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "MI",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 154,
+   "Name": "Rahul Tewatia",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "DEC",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 155,
+   "Name": "Shahbaz Nadeem",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "SRH",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 156,
+   "Name": "Basil Thampi",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "SRH",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 157,
+   "Name": "Sudhesan Midhun",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 158,
+   "Name": "Harshal Patel",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "DEC",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 159,
+   "Name": "KM Asif",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "CSK",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 160,
+   "Name": "Rasikh Dar",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "MI",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 161,
+   "Name": "Darshan Nalkande",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KXIP",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 162,
+   "Name": "Syed Khaleel Ahmed",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "SRH",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 163,
+   "Name": "Anrich Nortje",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KKR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 164,
+   "Name": "T Natarajan",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "SRH",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 165,
+   "Name": "Pawan Negi",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RCB",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 166,
+   "Name": "Deepak Chahar",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "CSK",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 167,
+   "Name": "Monu Kumar",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "CSK",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 168,
+   "Name": "Varun Chakaravarthy",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KXIP",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 169,
+   "Name": "Arshdeep Singh",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KXIP",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 170,
+   "Name": "Murugan Ashwin",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KXIP",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 171,
+   "Name": "Prasidh Krishna",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KKR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 172,
+   "Name": "Avesh Khan",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "DEC",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 173,
+   "Name": "Nathu Singh",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "DEC",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 174,
+   "Name": "Jayant Yadav",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "MI",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 175,
+   "Name": "Navdeep Saini",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RCB",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 176,
+   "Name": "Abhishek Sharma",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "SRH",
+   "Category": "AR"
+ },
+ {
+   "Player": 177,
+   "Name": "Shubham Ranjane",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RR",
+   "Category": "AR"
+ },
+ {
+   "Player": 178,
+   "Name": "Harpreet Brar",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KXIP",
+   "Category": "AR"
+ },
+ {
+   "Player": 179,
+   "Name": "Pankaj Jaswal",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "MI",
+   "Category": "AR"
+ },
+ {
+   "Player": 180,
+   "Name": "Anukul Roy",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "MI",
+   "Category": "AR"
+ },
+ {
+   "Player": 181,
+   "Name": "Kulwant Khejroliya",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RCB",
+   "Category": "AR"
+ },
+ {
+   "Player": 182,
+   "Name": "Aryaman Birla",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RR",
+   "Category": "AR"
+ },
+ {
+   "Player": 183,
+   "Name": "Jalaj Saxena",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "DEC",
+   "Category": "AR"
+ },
+ {
+   "Player": 184,
+   "Name": "Prayas Barman",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RCB",
+   "Category": "AR"
+ },
+ {
+   "Player": 185,
+   "Name": "Mahipal Lomror",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "RR",
+   "Category": "AR"
+ },
+ {
+   "Player": 186,
+   "Name": "Shrikant Mundhe",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KKR",
+   "Category": "AR"
+ },
+ {
+   "Player": 187,
+   "Name": "Ankush Bains",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "DEC",
+   "Category": "WK"
+ },
+ {
+   "Player": 188,
+   "Name": "Nikhil Naik",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KKR",
+   "Category": "WK"
+ },
+ {
+   "Player": 189,
+   "Name": "Prabhsimran Singh",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "KXIP",
+   "Category": "WK"
+ },
+ {
+   "Player": 190,
+   "Name": "Shreevats Goswami",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "SRH",
+   "Category": "WK"
+ }
+]

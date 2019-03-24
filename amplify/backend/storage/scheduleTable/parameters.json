@@ -1,0 +1,7 @@
+{
+    "tableName": "scheduleTable",
+    "partitionKeyName": "match",
+    "partitionKeyType": "N",
+    "sortKeyName": "timestamp",
+    "sortKeyType": "S"
+}

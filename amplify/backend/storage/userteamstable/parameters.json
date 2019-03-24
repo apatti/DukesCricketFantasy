@@ -1,0 +1,7 @@
+{
+    "tableName": "userteamstable",
+    "partitionKeyName": "username",
+    "partitionKeyType": "S",
+    "sortKeyName": "timestamp",
+    "sortKeyType": "N"
+}

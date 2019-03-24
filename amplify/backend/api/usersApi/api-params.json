@@ -1,0 +1,125 @@
+{
+    "paths": [
+        {
+            "name": "/users",
+            "lambdaFunction": "userlambda",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/players",
+            "lambdaFunction": "playerLambda",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/teamsetup",
+            "lambdaFunction": "teamsetupapi",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/schedule",
+            "lambdaFunction": "scheduleapi",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/userteams",
+            "lambdaFunction": "userteamsapi",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/lockedteams",
+            "lambdaFunction": "lockedteams",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "usersApi",
+    "apiName": "usersApi",
+    "functionArns": [
+        {
+            "lambdaFunction": "userlambda"
+        },
+        {
+            "lambdaFunction": "playerLambda"
+        },
+        {
+            "lambdaFunction": "teamsetupapi"
+        },
+        {
+            "lambdaFunction": "scheduleapi"
+        },
+        {
+            "lambdaFunction": "userteamsapi"
+        },
+        {
+            "lambdaFunction": "lockedteams"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "dukesiplfantasy-20190318221259-authRole",
+        "unAuthRoleName": "dukesiplfantasy-20190318221259-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "userlambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "playerLambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "teamsetupapi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "scheduleapi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "userteamsapi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "lockedteams",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "6dd8a36d"
+}

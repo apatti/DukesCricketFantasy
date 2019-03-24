@@ -1,0 +1,7 @@
+{
+    "tableName": "users",
+    "partitionKeyName": "username",
+    "partitionKeyType": "S",
+    "sortKeyName": "league",
+    "sortKeyType": "S"
+}
