@@ -5,13 +5,13 @@
 		"env": {
 			"Type": "String"
 		},
-		"storageuserteamstableName": {
+		"storageusermatchpointsName": {
 			"Type": "String",
-			"Default": "storageuserteamstableName"
+			"Default": "storageusermatchpointsName"
 		},
-		"storageuserteamstableArn": {
+		"storageusermatchpointsArn": {
 			"Type": "String",
-			"Default": "storageuserteamstableArn"
+			"Default": "storageusermatchpointsArn"
 		}
 	},
 	"Conditions": {
@@ -36,12 +36,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"userteamsapi",
+						"usermatchpointsapi",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"userteamsapi",
+									"usermatchpointsapi",
 									"-",
 									{
 										"Ref": "env"
@@ -68,7 +68,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "dukesiplfantasy-20190318221259-deployment",
-					"S3Key": "amplify-builds/userteamsapi-1553579146-latest-build.zip"
+					"S3Key": "amplify-builds/usermatchpointsapi-1553486383-latest-build.zip"
 				}
 			}
 		},
@@ -78,12 +78,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"dukesiplfantasyLambdaRole16bfd825",
+						"dukesiplfantasyLambdaRoledb679ca1",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"dukesiplfantasyLambdaRole16bfd825",
+									"dukesiplfantasyLambdaRoledb679ca1",
 									"-",
 									{
 										"Ref": "env"
@@ -162,7 +162,7 @@
 							],
 							"Resource": [
 								{
-									"Ref": "storageuserteamstableArn"
+									"Ref": "storageusermatchpointsArn"
 								}
 							]
 						}

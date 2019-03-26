@@ -21,6 +21,16 @@
       </strong>
     </template>
   </b-table>
+  <div>
+    <b-button variant="success" v-b-toggle.collapse1 >{{pointsCollapseText}}</b-button>
+    <b-collapse id="collapse1" visible class="mt-2">
+      <b-table
+        :items="matchPoints"
+        :fields="pointsFields"
+        striped small bordered caption-top>
+      </b-table>
+    </b-collapse>
+  </div>
   </div>
 </template>
 
@@ -30,6 +40,8 @@
     name: "Team",
     data(){
       return{
+        pointsCollapseText:"Hide Points History",
+        matchPoints:[],
         username:"",
         teamName:"",
         team:null,
@@ -44,6 +56,17 @@
           {key:'team',sortable:true},
           {key:'category',sortable:true},
           {key:'salary',sortable:true}
+        ],
+        pointsFields:[
+          {key:"#",sortable:true},
+          {key:'match',sortable:true},
+          {key:'batting',sortable:true},
+          {key:'bowling',sortable:true},
+          {key:'fielding',sortable:true},
+          {key:'mom',sortable:true},
+          {key:'captain',sortable:true},
+          {key:'vice-captain',sortable:true},
+          {key:'total',sortable:true}
         ]
       }
     },
@@ -52,6 +75,16 @@
       this.username=this.$route.params.username;
     },
     mounted() {
+      this.$root.$on('bv::collapse::state', (collapseId, isJustShown) => {
+        if(!isJustShown)
+        {
+          this.pointsCollapseText="Show Points History";
+        }
+        else {
+          this.pointsCollapseText="Hide Points History";
+        }
+
+      });
       //do something after mounting vue instance
       //let username = this.$route.params.username;
       API.get('usersApi',"/lockedteams/"+this.username).then(response =>{
@@ -63,10 +96,31 @@
           this.subs = teamRecord.subs;
           this.c=teamRecord.c;
           this.vc=teamRecord.vc;
+          this.points=teamRecord.points;
           this.localtime=teamRecord.localtime;
           for(var i=0;i<this.team.length;i++)
           {
             this.budget+=this.team[i].salary;
+          }
+        }
+      });
+      API.get('usersApi',"/usermatchpoints/"+this.username).then(response =>{
+        if(response.length!=0)
+        {
+          this.matchPoints=[];
+          for(var i=0;i<response.length;i++)
+          {
+            this.matchPoints.push({
+                "#":i+1,
+                "match":response[i].match,
+                "batting":response[i].points.batPoints,
+                "bowling":response[i].points.bowlPoints,
+                "fielding":response[i].points.fieldPoints,
+                "mom":response[i].points.momPoints,
+                "total":response[i].points.totalPoints,
+                "captain":response[i].points.capPoints,
+                "vice-captain":response[i].points.vcPoints
+            });
           }
         }
       });

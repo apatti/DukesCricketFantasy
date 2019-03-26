@@ -35,16 +35,23 @@
                 <b-progress class="mt-2" :max=100 :value="(budget/1000000)*100" show-value variant="info"/>
               </p>
               Subs:{{subs}}
+              <p>
+                Points:{{points}}
+              </p>
+              <p>
+                Last update: {{localtime}}
+              </p>
               </strong>
+
             </template>
           </b-table>
           <div class="row justify-content-center align-items-center">
-            <b-button variant="success" class="ml-1" v-b-toggle.collapse1 @click="onPlayerAdd" >Add</b-button>
-            <b-button variant="danger" class="ml-1" v-b-toggle.collapse1 @click="onPlayerRemove">Remove</b-button>
+            <b-button variant="success" class="ml-1"  @click="onPlayerAdd" >Add</b-button>
+            <b-button variant="danger" class="ml-1"  @click="onPlayerRemove">Remove</b-button>
           </div>
           <div>
-            <b-button v-b-toggle.collapse1 class="mb-2" variant="info">Show Players</b-button>
-            <b-collapse id="collapse1" class="mt-2">
+            <b-button v-b-toggle.collapse1 class="mb-2" variant="info">{{playerCollapseText}}</b-button>
+            <b-collapse id="collapse1" visible class="mt-2">
               <b-form-input v-model="filter" placeholder="Type to Search" />
               <b-table
               selectable
@@ -112,8 +119,11 @@
     name: "TeamSetup",
     data(){
       return {
+        localtime:"",
+        playerCollapseText:"Hide players",
         budget:0,
         subs:120,
+        points:0,
         lockedTeam:null,
         filter:"",
         currentRecord:null,
@@ -198,7 +208,14 @@
         evt.preventDefault();
         var username =localStorage.getItem("username");
         var teamBudget = this.calculateBudget();
-        var newSubCount=this.lockedTeam.subs-this.getSubCount();
+        var newSubCount=120;
+        if(this.lockedTeam==null || this.isNewteam)
+        {
+          newSubCount=120;
+        }
+        else {
+          newSubCount=this.lockedTeam.subs-this.getSubCount();
+        }
         if(newSubCount<0)
         {
           this.teamSubmissionErrorText="No more lives (subs) for you :) !!!";
@@ -238,14 +255,17 @@
           "c":this.form.c,
           "vc":this.form.vc,
           "subs":newSubCount,
-          "points":0,
+          "points":this.points,
           "bat":this.form.bat,
           "bowl":this.form.bowl,
           "ar":this.form.ar,
           "wk":this.form.wk,
-          "filler":this.form.filler
+          "filler":this.form.filler,
+          "version":"v1",
+          "isNewteam":this.isNewteam,
+          "lockedTeam":this.lockedTeam
         }}).then(response=>{
-          if(response)
+          if(response && response.hasOwnProperty('success'))
           {
             //this.changeText=changes;
             //this.$refs.teamChangesModalRef.show();
@@ -254,7 +274,8 @@
             router.push({ name: "home" });
           }
           else {
-            alert(JSON.stringify(response));
+            //console.log(response);
+            alert(JSON.stringify(response.error));
           }
         });
       },
@@ -328,6 +349,8 @@
         }
         if(this.form.team.length>=11)
         {
+          this.teamSubmissionErrorText="Addition of players would make your player count more than 11 !!";
+          this.$refs.myModalRef.show();
           return;
         }
         var catCount = this.getCategoryCount(this.form.team);
@@ -351,85 +374,10 @@
             }
             continue;
           }
-        /*  switch (player.category) {
-            case "Bat":
-            {
-              if(this.form.bat.length>=3 && this.form.filler.length>=2)
-              {
-                break;
-              }
-              if(this.form.bat.length<3||this.form.filler.length<2)
-              {
-                this.form.team.push(player);
-                this.players.splice(this.players.map(function(e) { return e.name; }).indexOf(player.name),1);
-                if(this.form.bat.length<3)
-                {
-                  this.form.bat.push(player);
-                }
-                else if (this.form.filler.length<=2) {
-                    this.form.filler.push(player);
-                  }
-              }
-              break;
-            }
-            case "Bowl":
-            {
-              if(this.form.bowl.length<3)
-              {
-                this.form.bowl.push(player);
-                this.form.team.push(player);
-                this.players.splice(this.players.map(function(e) { return e.name; }).indexOf(player.name),1);
-                break;
-              }
-              if(this.form.filler.length<2)
-              {
-                this.form.filler.push(player);
-                this.form.team.push(player);
-                this.players.splice(this.players.map(function(e) { return e.name; }).indexOf(player.name),1);
-                break;
-              }
-              break;
-            }
-            case "AR":
-            {
-              if(this.form.ar.length<2)
-              {
-                this.form.ar.push(player);
-                this.form.team.push(player);
-                this.players.splice(this.players.map(function(e) { return e.name; }).indexOf(player.name),1);
-                break;
-              }
-              if(this.form.filler.length<2)
-              {
-                this.form.filler.push(player);
-                this.form.team.push(player);
-                this.players.splice(this.players.map(function(e) { return e.name; }).indexOf(player.name),1);
-                break;
-              }
-              break;
-            }
-            case "WK":
-            {
-              if(this.form.wk.length==0)
-              {
-                this.form.wk.push(player);
-                this.form.team.push(player);
-                this.players.splice(this.players.map(function(e) { return e.name; }).indexOf(player.name),1);
-                break;
-              }
-              if(this.form.filler.length<2)
-              {
-                this.form.filler.push(player);
-                this.form.team.push(player);
-                this.players.splice(this.players.map(function(e) { return e.name; }).indexOf(player.name),1);
-                break;
-              }
-              break;
-            }
-            default:
-
+          else {
+            this.teamSubmissionErrorText="Adding "+player.name+" would violate team combination rules.\n Valid combo: Bat:3, Bowl:3, AR:2, WK:1, Fillers: 2";
+            this.$refs.myModalRef.show();
           }
-*/
         }
         this.budget = this.calculateBudget();
         this.playersToAdd=[];
@@ -485,6 +433,16 @@
       }
     },
     mounted() {
+      this.$root.$on('bv::collapse::state', (collapseId, isJustShown) => {
+        if(!isJustShown)
+        {
+          this.playerCollapseText="Show Players";
+        }
+        else {
+          this.playerCollapseText="Hide Players";
+        }
+
+      });
       //do something after mounting vue instance
       let username = localStorage.getItem("username");
 
@@ -519,6 +477,7 @@
           this.form.wk=[];
           this.form.filler=[];
           this.subs = localRecord.subs;
+          this.localtime=localRecord.localtime;
           this.isNewteam=false;
           //alert(this.players.length);
           for(var i=0;i<this.form.team.length;i++)
@@ -589,6 +548,7 @@
     }).then(response=>{
       API.get('usersApi',"/lockedteams/"+username).then((response)=>{
         this.lockedTeam = response[response.length-1];
+        this.points = this.lockedTeam.points;
       })
     });
     }

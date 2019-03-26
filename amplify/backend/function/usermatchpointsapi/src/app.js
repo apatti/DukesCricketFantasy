@@ -14,7 +14,7 @@ AWS.config.update({ region: process.env.TABLE_REGION });
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
-let tableName = "userteamstable";
+let tableName = "usermatchpoints";
 if(process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + '-' + process.env.ENV;
 }
@@ -22,14 +22,13 @@ if(process.env.ENV && process.env.ENV !== "NONE") {
 const userIdPresent = false; // TODO: update in case is required to use that definition
 const partitionKeyName = "username";
 const partitionKeyType = "S";
-const sortKeyName = "timestamp";
-const sortKeyType = "N";
+const sortKeyName = "match";
+const sortKeyType = "S";
 const hasSortKey = sortKeyName !== "";
-const path = "/userteams";
+const path = "/usermatchpoints";
 const UNAUTH = 'UNAUTH';
 const hashKeyPath = '/:' + partitionKeyName;
 const sortKeyPath = hasSortKey ? '/:' + sortKeyName : '';
-const versionKey = "v1";
 // declare a new express app
 var app = express()
 app.use(bodyParser.json())
@@ -61,7 +60,7 @@ app.get(path + hashKeyPath, function(req, res) {
   condition[partitionKeyName] = {
     ComparisonOperator: 'EQ'
   }
-
+  
   if (userIdPresent && req.apiGateway) {
     condition[partitionKeyName]['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
   } else {
@@ -71,14 +70,11 @@ app.get(path + hashKeyPath, function(req, res) {
       res.json({error: 'Wrong column type ' + err});
     }
   }
-  //console.log(condition);
+
   let queryParams = {
     TableName: tableName,
-    KeyConditions: condition,
-    ScanIndexForward:false,
-    ConsistentRead:false,
-    Limit:1,
-  }
+    KeyConditions: condition
+  } 
 
   dynamodb.query(queryParams, (err, data) => {
     if (err) {
@@ -137,7 +133,7 @@ app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
 *************************************/
 
 app.put(path, function(req, res) {
-
+  
   if (userIdPresent) {
     req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
   }
@@ -160,52 +156,11 @@ app.put(path, function(req, res) {
 *************************************/
 
 app.post(path, function(req, res) {
-  if(!req.body.hasOwnProperty('version') || req.body.version!=versionKey || !req.body.hasOwnProperty('lockedTeam'))
-  {
-    console.log("ERROR:Please clear your cache and try again");
-    console.log("ERROR:"+req.body);
-    res.json({error: "Please clear your cache and try again", url: req.url, body: req.body});
-    return;
-  }
-
-  var lockedTeam = req.body.lockedTeam;
-  if(req.body.team.length!=11)
-  {
-    console.log("ERROR:Team doesnt have 11 players");
-    console.log("ERROR:"+req.body);
-    res.json({error: "Team doesn't have 11 players", url: req.url, body: req.body});
-    return;
-  }
-  if(!req.body.isNewteam)
-  {
-    var subCount = req.body.team.filter(function(player){
-      return lockedTeam.team.map(function(e) { return e.name; }).indexOf(player.name) ===-1;
-    }).length;
-
-    var newSubCount=lockedTeam.subs-subCount;
-    if(newSubCount<0)
-    {
-        console.log("Insufficient subs:"+req.body);
-        res.json({error: "Insufficient subs", url: req.url, body: req.body});
-        return;
-    }
-    if(req.body.subs!=newSubCount)
-    {
-      console.log("SUB COUNT DIFFERENCE!! Req SUB:"+req.body.subs+"  API Subs:"+newSubCount);
-      req.body.subs = newSubCount;
-    }
-
-    console.log("Updating the points to:"+lockedTeam.points);
-    req.body.points = lockedTeam.points;
-  }
-  else {
-    req.body.points = 0;
-  }
+  
   if (userIdPresent) {
     req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
   }
-  delete req.body.version;
-  delete req.body.lockedTeam;
+
   let putItemParams = {
     TableName: tableName,
     Item: req.body

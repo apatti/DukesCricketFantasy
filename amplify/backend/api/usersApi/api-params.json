@@ -41,6 +41,20 @@
             "privacy": {
                 "open": true
             }
+        },
+        {
+            "name": "/matchpoints",
+            "lambdaFunction": "matchpointslambda",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/usermatchpoints",
+            "lambdaFunction": "usermatchpointsapi",
+            "privacy": {
+                "open": true
+            }
         }
     ],
     "resourceName": "usersApi",
@@ -63,6 +77,12 @@
         },
         {
             "lambdaFunction": "lockedteams"
+        },
+        {
+            "lambdaFunction": "matchpointslambda"
+        },
+        {
+            "lambdaFunction": "usermatchpointsapi"
         }
     ],
     "privacy": {
@@ -119,7 +139,23 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "matchpointslambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "usermatchpointsapi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
     ],
-    "uuid": "6dd8a36d"
+    "uuid": "de1cd837"
 }

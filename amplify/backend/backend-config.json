@@ -27,6 +27,14 @@
         "userteamstable": {
             "service": "DynamoDB",
             "providerPlugin": "awscloudformation"
+        },
+        "matchpoints": {
+            "service": "DynamoDB",
+            "providerPlugin": "awscloudformation"
+        },
+        "usermatchpoints": {
+            "service": "DynamoDB",
+            "providerPlugin": "awscloudformation"
         }
     },
     "function": {
@@ -110,6 +118,36 @@
                     ]
                 }
             ]
+        },
+        "matchpointslambda": {
+            "service": "Lambda",
+            "providerPlugin": "awscloudformation",
+            "build": true,
+            "dependsOn": [
+                {
+                    "category": "storage",
+                    "resourceName": "matchpoints",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
+        },
+        "usermatchpointsapi": {
+            "service": "Lambda",
+            "providerPlugin": "awscloudformation",
+            "build": true,
+            "dependsOn": [
+                {
+                    "category": "storage",
+                    "resourceName": "usermatchpoints",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
         }
     },
     "api": {
@@ -160,6 +198,22 @@
                 {
                     "category": "function",
                     "resourceName": "lockedteams",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "matchpointslambda",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "usermatchpointsapi",
                     "attributes": [
                         "Name",
                         "Arn"

@@ -96,6 +96,12 @@ const router = new Router({
       meta: {requiresAuth: true}
     },
     {
+      path: '/matchpoints',
+      name: 'matchpoints',
+      component: () => import(/* webpackChunkName: "about" */ './views/MatchPoints.vue'),
+      meta: {requiresAuth: true}
+    },
+    {
       path: '/auth',
       name: 'Authenticator',
       component: components.Authenticator

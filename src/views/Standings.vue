@@ -3,7 +3,10 @@
     <b-table
     :items="users"
     :fields="teamFields"
-    striped fixed small bordered caption-top>
+    striped small bordered caption-top>
+    <template slot="rank" slot-scope="data">
+      {{ data.index + 1 }}
+    </template>
     <template slot="team" slot-scope="data">
       <router-link  :to="{ name: 'team', params: { username: data.item.manager}}">{{data.value}}</router-link>
     </template>
@@ -20,11 +23,24 @@
       return{
         users:null,
         teamFields: [
-          {key:'team',sortable:true},
-          {key:'manager',sortable:true},
-          {key:'points',sortable:true},
-          {key:'subs',sortable:true}
+          {key:'rank'},
+          {key:'team'},
+          {key:'manager'},
+          {key:'points'},
+          {key:'subs'}
         ]
+      }
+    },
+    methods: {
+      rankCompare(a,b) {
+        if(a.points>b.points) return -1;
+        if(a.points<b.points) return 1;
+        if(a.points==b.points)
+        {
+          if(a.subs>b.subs) return -1;
+          if(a.subs<b.subs) return 1;
+        }
+        return 0;
       }
     },
     mounted() {
@@ -43,6 +59,7 @@
               "subs":userRecord.subs
             });
           }
+          this.users.sort(this.rankCompare);
         }
       });
     }

@@ -1,0 +1,5 @@
+{
+    "tableName": "matchpoints",
+    "partitionKeyName": "match",
+    "partitionKeyType": "S"
+}

@@ -1,0 +1,7 @@
+{
+    "tableName": "usermatchpoints",
+    "partitionKeyName": "username",
+    "partitionKeyType": "S",
+    "sortKeyName": "match",
+    "sortKeyType": "S"
+}
