@@ -132,11 +132,6 @@
         form:{
           teamName:"",
           team:[],
-          bat:[],
-          bowl:[],
-          ar:[],
-          wk:[],
-          filler:[],
           c:"",
           vc:""
         },
@@ -256,11 +251,6 @@
           "vc":this.form.vc,
           "subs":newSubCount,
           "points":this.points,
-          "bat":this.form.bat,
-          "bowl":this.form.bowl,
-          "ar":this.form.ar,
-          "wk":this.form.wk,
-          "filler":this.form.filler,
           "version":"v1",
           "isNewteam":this.isNewteam,
           "lockedTeam":this.lockedTeam
@@ -320,11 +310,6 @@
         if(this.currentRecord===null)
         {
           this.form.teamName="";
-          this.form.bat=[];
-          this.form.bowl=[];
-          this.form.ar=[];
-          this.form.wk=[];
-          this.form.filler=[];
           this.form.c="";
           this.form.vc="";
           this.form.team=[];
@@ -332,10 +317,6 @@
         else {
           var currentRecord = this.jsonCopy(this.currentRecord);
           this.form.teamName=currentRecord.teamName;
-          this.form.bat = currentRecord.bat;
-          this.form.ar=currentRecord.ar;
-          this.form.wk=currentRecord.wk;
-          this.form.filler=currentRecord.wk;
           this.form.c = currentRecord.c;
           this.form.vc=currentRecord.vc;
           this.form.team=currentRecord.team;
@@ -388,36 +369,6 @@
         {
           var player = this.playersToDrop[i];
           this.form.team.splice(this.form.team.map(function(e) { return e.name; }).indexOf(player.name),1);
-          var batindex = this.form.bat.map(function(e) { return e.name; }).indexOf(player.name);
-          if(batindex>-1)
-          {
-            this.form.bat.splice(batindex,1);
-          }
-          else {
-            var bowlindex = this.form.bowl.map(function(e) { return e.name; }).indexOf(player.name);
-            if(bowlindex>-1)
-            {
-              this.form.bowl.splice(bowlindex,1);
-            }
-            else {
-              var arindex = this.form.ar.map(function(e) { return e.name; }).indexOf(player.name);
-              if(arindex>-1)
-              {
-                this.form.ar.splice(arindex,1);
-              }
-              else {
-                var fillerindex = this.form.filler.map(function(e) { return e.name; }).indexOf(player.name);
-                if(fillerindex>-1)
-                {
-                  this.form.filler.splice(fillerindex,1);
-                }
-              }
-            }
-          }
-          if(this.form.wk.length>0&&player.name==this.form.wk[0].name)
-          {
-            this.form.wk.pop();
-          }
           this.players.push(player);
         }
         this.budget = this.calculateBudget();
@@ -461,21 +412,11 @@
         {
           //only one record should be returned
           this.currentRecord  = response[response.length-1];
-          this.currentRecord.bat = [];
-          this.currentRecord.bowl=[];
-          this.currentRecord.ar=[];
-          this.currentRecord.wk=[];
-          this.currentRecord.filler=[];
           var localRecord = this.jsonCopy(this.currentRecord);
           this.form.teamName = localRecord.teamName;
           this.form.team=localRecord.team;
           this.form.c=localRecord.c;
           this.form.vc=localRecord.vc;
-          this.form.bat=[];
-          this.form.bowl=[];
-          this.form.ar=[];
-          this.form.wk=[];
-          this.form.filler=[];
           this.subs = localRecord.subs;
           this.localtime=localRecord.localtime;
           this.isNewteam=false;
@@ -483,62 +424,6 @@
           for(var i=0;i<this.form.team.length;i++)
           {
             var player = this.form.team[i];
-            switch (player.category) {
-              case "Bat":
-              {
-                if(this.form.bat.length<3)
-                {
-                  this.form.bat.push(player);
-                  this.currentRecord.bat.push(player);
-                }
-                else {
-                  this.form.filler.push(player);
-                  this.currentRecord.filler.push(player);
-                }
-                break;
-              }
-              case "Bowl":
-              {
-                if(this.form.bowl.length<3)
-                {
-                  this.form.bowl.push(player);
-                  this.currentRecord.bowl.push(player);
-                }
-                else {
-                  this.form.filler.push(player);
-                  this.currentRecord.filler.push(player);
-                }
-                break;
-              }
-              case "AR":
-              {
-                if(this.form.ar.length<2)
-                {
-                  this.form.ar.push(player);
-                  this.currentRecord.ar.push(player);
-                }
-                else {
-                  this.form.filler.push(player);
-                  this.currentRecord.filler.push(player);
-                }
-                break;
-              }
-              case "WK":
-              {
-                if(this.form.wk.length==0)
-                {
-                  this.form.wk.push(player);
-                  this.currentRecord.wk.push(player);
-                }
-                else {
-                  this.form.filler.push(player);
-                  this.currentRecord.filler.push(player);
-                }
-                break;
-              }
-              default:
-                break;
-            }
             this.players.splice(this.players.map(function(e) { return e.name; }).indexOf(player.name),1);
             this.cachePlayers=this.jsonCopy(this.players);
             this.budget+=player.salary;
