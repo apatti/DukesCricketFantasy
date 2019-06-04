@@ -1518,5 +1518,45 @@
    "Salary": 80000,
    "Team": "SRH",
    "Category": "WK"
+ },
+ {
+   "Player": 191,
+   "Name": "Scott Kuggeleijn",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "CSK",
+   "Category": "AR"
+ },
+ {
+   "Player": 192,
+   "Name": "Alzarri Joseph",
+   "Base": 8,
+   "Salary": 80000,
+   "Team": "MI",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 193,
+   "Name": "Dale Steyn",
+   "Base": 8.5,
+   "Salary": 85000,
+   "Team": "RCB",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 194,
+   "Name": "Sandeep Warrier",
+   "Base": 7.5,
+   "Salary": 75000,
+   "Team": "KKR",
+   "Category": "Bowl"
+ },
+ {
+   "Player": 195,
+   "Name": "Jagadeesha Suchith",
+   "Base": 7.5,
+   "Salary": 75000,
+   "Team": "DEC",
+   "Category": "Bowl"
  }
 ]

@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <b-table striped bordered hover :items="managers" :fields="fields" >
+    <b-table striped bordered hover :items="managers" :busy="isBusy" :fields="fields" >
+      <div slot="table-busy" class="text-center text-danger my-2">
+          <b-spinner class="align-middle" />
+          <strong>Loading...</strong>
+      </div>
       <template slot="#" slot-scope="data">
         {{ data.index+1}}
       </template>
@@ -17,6 +21,7 @@
     name:"Managers",
     data(){
       return{
+        isBusy:true,
         managers:[],
         fields: [
           '#',
@@ -29,6 +34,7 @@
       //do something after mounting vue instance
       API.get('usersApi',"/users").then(response=>{
           this.managers =response;
+          this.isBusy=false;
           //alert(JSON.stringify(this.managers));
       });
     }

@@ -176,7 +176,24 @@ app.post(path, function(req, res) {
     res.json({error: "Team doesn't have 11 players", url: req.url, body: req.body});
     return;
   }
-  if(!req.body.isNewteam)
+  var teamCatMap = req.body.team.reduce((a,b)=>{(a[b.category]=a[b.category]+1||1);return a},{});
+  if(teamCatMap.Batsman<3||teamCatMap.Bowler<3||teamCatMap['Wicket-Keeper']<1||teamCatMap['All-Rounder']<2)
+  {
+    console.log("ERROR:Team doesnt have proper composition:"+teamCatMap);
+    console.log("ERROR:"+req.body);
+    res.json({error: "Team doesn't have valid composition", url: req.url, body: req.body});
+    return;
+  }
+  
+  var numberOfDraftedPlayers = req.body.team.reduce(function(a,b){return a+(b.drafted==true?1:0)},0);
+  if(numberOfDraftedPlayers!=2)
+  {
+    console.log("ERROR:Cannot drop drafted player, total drafted players:"+numberOfDraftedPlayers);
+    console.log("ERROR:"+JSON.stringify(req.body.team));
+    res.json({error: "Cannot drop drafted player", url: req.url, body: req.body});
+    return;
+  }
+  if(!req.body.isNewteam && lockedTeam!=null)
   {
     var subCount = req.body.team.filter(function(player){
       return lockedTeam.team.map(function(e) { return e.name; }).indexOf(player.name) ===-1;
@@ -196,7 +213,10 @@ app.post(path, function(req, res) {
     }
 
     console.log("Updating the points to:"+lockedTeam.points);
+    console.log("updating the phase to:"+lockedTeam.phase);
     req.body.points = lockedTeam.points;
+    req.body.phase = lockedTeam.phase;
+    req.body.matchpoints = lockedTeam.matchpoints;
   }
   else {
     req.body.points = 0;

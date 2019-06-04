@@ -55,6 +55,48 @@
             "privacy": {
                 "open": true
             }
+        },
+        {
+            "name": "/teamcomposition",
+            "lambdaFunction": "teamcompositionapi",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/livepts",
+            "lambdaFunction": "liveptsapi",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/rules",
+            "lambdaFunction": "ruleapi",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/points",
+            "lambdaFunction": "pointsupdate",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/playertransfer",
+            "lambdaFunction": "playertransferapi",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/transferlist",
+            "lambdaFunction": "transferlistapi",
+            "privacy": {
+                "open": true
+            }
         }
     ],
     "resourceName": "usersApi",
@@ -83,6 +125,24 @@
         },
         {
             "lambdaFunction": "usermatchpointsapi"
+        },
+        {
+            "lambdaFunction": "teamcompositionapi"
+        },
+        {
+            "lambdaFunction": "liveptsapi"
+        },
+        {
+            "lambdaFunction": "ruleapi"
+        },
+        {
+            "lambdaFunction": "pointsupdate"
+        },
+        {
+            "lambdaFunction": "playertransferapi"
+        },
+        {
+            "lambdaFunction": "transferlistapi"
         }
     ],
     "privacy": {
@@ -155,7 +215,55 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "teamcompositionapi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "liveptsapi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "ruleapi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "pointsupdate",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "playertransferapi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "transferlistapi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
     ],
-    "uuid": "de1cd837"
+    "uuid": "fcc96d43"
 }

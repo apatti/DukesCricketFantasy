@@ -27,8 +27,13 @@
           selectedVariant="danger"
           :items="form.team"
           :fields="teamFields"
+          :busy="isBusy"
           @row-selected="droppedListSelected"
           stripped fixed small bordered caption-top>
+          <div slot="table-busy" class="text-center text-danger my-2">
+              <b-spinner class="align-middle" />
+              <strong>Loading...</strong>
+            </div>
             <template slot="table-caption"><strong>Budget:${{budget}}/{{1000000}}<br/>
               Remaining:${{1000000-budget}}<br/>
               <p >Salary Utilization
@@ -37,6 +42,9 @@
               Subs:{{subs}}
               <p>
                 Points:{{points}}
+              </p>
+              <p>
+                Phase Points:{{phase}}
               </p>
               <p>
                 Last update: {{localtime}}
@@ -103,27 +111,39 @@
             <b-modal id="modal1" title="Team Submission Error" ref="myModalRef">
                 <p class="my-4">{{teamSubmissionErrorText}}</p>
             </b-modal>
-            <b-modal id="modal2" title="Team successfully added!!" ref="teamChangesModalRef">
-                <p class="my-4">{{changeText}}</p>
+            <b-modal id="modal2" title="Team successfully added!!" ref="teamChangesModalRef" :ok-only=true>
+                <p class="my-4"><span v-html="changeText"></span></p>
+            </b-modal>
+            <b-modal id="modal3" title="Team Reset options!!" ref="teamResetModalRef" ok-variant="primary" ok-title="Cancel" :ok-only=true>
+                <p class="my-4">Previous Submit time:<br/> {{localtime}}</p>
+                <b-button class="mt-3" variant="outline-danger" block @click="onPreviousReset">Reset to previous submission</b-button>
+                <p class="my-4">Previous Locked time:<br/> {{previousLockedTime}}</p>
+
+                <b-button class="mt-3" variant="outline-danger" block @click="onLockedReset">Reset to locked state</b-button>
             </b-modal>
           </div>
       </b-form>
+      <div>
+        <b-button class="mt-3 mb-3" variant="warning" :to="{ name: 'transfers', params: { username: username,userteam:lockedTeam }}">Player Transfer</b-button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
   import { API } from "aws-amplify";
-  import router from '../router';
   export default{
     name: "TeamSetup",
     data(){
       return {
         localtime:"",
+        previousLockedTime:"",
+        isBusy:true,
         playerCollapseText:"Hide players",
         budget:0,
-        subs:120,
+        subs:85,
         points:0,
+        phase:0,
         lockedTeam:null,
         filter:"",
         currentRecord:null,
@@ -144,7 +164,7 @@
           {key:'salary',sortable:true}
         ],
         teamFields: [
-          {key:'name',sortable:true},
+          {key:'name',sortable:true,formatter:'captainCheck'},
           {key:'team',sortable:true},
           {key:'category',sortable:true},
           {key:'salary',sortable:true}
@@ -152,7 +172,8 @@
         playersToAdd:[],
         playersToDrop:[],
         budgetExceeded:false,
-        teamSubmissionErrorText:""
+        teamSubmissionErrorText:"",
+        username:null
       }
     },
     computed:{
@@ -160,7 +181,28 @@
         return this.form.teamName.length >0;
       }
     },
+    created() {
+      //do something after creating vue instance
+      this.username=this.$route.params.username;
+    },
     methods: {
+      captainCheck(value) {
+        if(value==this.form.c)
+        {
+          if(value==this.form.vc)
+          {
+            return value + " (C/VC)";
+          }
+          else {
+            return value + " (C)";
+          }
+        }
+        if(value==this.form.vc) {
+          return value + " (VC)";
+        }
+
+        return value;
+      },
       getChanges(){
         var changes={};
         if(this.currentRecord==null)
@@ -186,9 +228,6 @@
         changes["subtractions"] = this.currentRecord.team.filter(function(player){
           return this.form.team.map(function(e) { return e.name; }).indexOf(player.name) ===-1;
         },this).map(function(e){return e.name+" ("+e.category+")"});
-        //alert(JSON.stringify(changes));
-        //changes["additions"].join("<br/>");
-        //return changes["additions"].join("<br/>");
         return changes;
       },
       getSubCount(){
@@ -203,10 +242,10 @@
         evt.preventDefault();
         var username =localStorage.getItem("username");
         var teamBudget = this.calculateBudget();
-        var newSubCount=120;
+        var newSubCount=85;
         if(this.lockedTeam==null || this.isNewteam)
         {
-          newSubCount=120;
+          newSubCount=85;
         }
         else {
           newSubCount=this.lockedTeam.subs-this.getSubCount();
@@ -251,21 +290,22 @@
           "vc":this.form.vc,
           "subs":newSubCount,
           "points":this.points,
+          "phase":this.phase,
           "version":"v1",
           "isNewteam":this.isNewteam,
           "lockedTeam":this.lockedTeam
         }}).then(response=>{
           if(response && response.hasOwnProperty('success'))
           {
-            //this.changeText=changes;
-            //this.$refs.teamChangesModalRef.show();
-            alert("Team successfully added!!");
-            alert(JSON.stringify(changes));
-            router.push({ name: "home" });
+            this.changeText=JSON.stringify(changes);
+            this.$refs.teamChangesModalRef.show();
+
           }
           else {
             //console.log(response);
-            alert(JSON.stringify(response.error));
+            this.teamSubmissionErrorText=JSON.stringify(response.error);
+            this.$refs.myModalRef.show();
+            //alert(JSON.stringify(response.error));
           }
         });
       },
@@ -273,38 +313,58 @@
         this.playersToAdd=items;
       },
       droppedListSelected(items){
+        var invalidRemovals = items.map(e=>e.drafted==true);
+        //var invalidRemovals = items.splice(items.map(function(e) { return e.drafted; }).indexOf(true),1);
+        if(invalidRemovals.indexOf(true)>-1)
+        {
+          alert("Warning!! drafted players cannot be removed!");
+          //alert(JSON.stringify(invalidRemovals));
+          for(var re=0;re<invalidRemovals.length;re++)
+          {
+            if(invalidRemovals[re]==true)
+            {
+              items.splice(re,1);
+            }
+          }
+          //items.splice(invalidRemovals.indexOf(true),1);
+        }
         this.playersToDrop=items;
       },
       getCategoryCount(team){
-        var catCount={"Bat":3,"Bowl":3,"WK":1,"AR":2,"f":2}
+        var catCount={"Batsman":3,"Bowler":3,"Wicket-Keeper":1,"All-Rounder":2,"f":2}
         for(var i=0;i<team.length;i++)
         {
           catCount[team[i].category]--;
         }
-        if(catCount.Bat<0)
+        if(catCount['Batsman']<0)
         {
-          catCount.f += catCount.Bat;
-          catCount.Bat=0
+          catCount.f += catCount['Batsman'];
+          catCount['Batsman']=0
         }
-        if(catCount.Bowl<0)
+        if(catCount['Bowler']<0)
         {
-          catCount.f += catCount.Bowl;
-          catCount.Bowl=0
+          catCount.f += catCount['Bowler'];
+          catCount['Bowler']=0
         }
-        if(catCount.AR<0)
+        if(catCount['All-Rounder']<0)
         {
-          catCount.f += catCount.AR;
-          catCount.AR=0
+          catCount.f += catCount['All-Rounder'];
+          catCount['All-Rounder']=0
         }
-        if(catCount.WK<0)
+        if(catCount['Wicket-Keeper']<0)
         {
-          catCount.f += catCount.WK;
-          catCount.WK=0
+          catCount.f += catCount['Wicket-Keeper'];
+          catCount['Wicket-Keeper']=0
         }
         return catCount;
       },
-      onReset(evt) {
-        evt.preventDefault()
+      onReset(evt){
+        evt.preventDefault();
+        this.$refs.teamResetModalRef.show();
+      },
+      onPreviousReset(evt) {
+        evt.preventDefault();
+        this.$refs.teamResetModalRef.hide();
         this.budgetExceeded=false;
         this.players=this.cachePlayers;
         if(this.currentRecord===null)
@@ -320,6 +380,29 @@
           this.form.c = currentRecord.c;
           this.form.vc=currentRecord.vc;
           this.form.team=currentRecord.team;
+        }
+      },
+      onLockedReset(evt){
+        evt.preventDefault();
+        this.$refs.teamResetModalRef.hide();
+        this.budgetExceeded=false;
+        this.players=this.cachePlayers;
+        if(this.lockedTeam===null)
+        {
+          this.form.teamName="";
+          this.form.c="";
+          this.form.vc="";
+          this.form.team=[];
+        }
+        else {
+          var lockedTeam = this.jsonCopy(this.lockedTeam);
+          this.form.teamName=lockedTeam.teamName;
+          this.form.c = lockedTeam.c;
+          this.form.vc=lockedTeam.vc;
+          this.form.team=lockedTeam.team;
+          this.subs=lockedTeam.subs;
+          this.points=lockedTeam.points;
+          this.phase=lockedTeam.phase;
         }
       },
       onPlayerAdd(evt){
@@ -356,7 +439,7 @@
             continue;
           }
           else {
-            this.teamSubmissionErrorText="Adding "+player.name+" would violate team combination rules.\n Valid combo: Bat:3, Bowl:3, AR:2, WK:1, Fillers: 2";
+            this.teamSubmissionErrorText="Adding "+player.name+" would violate team combination rules.\n Valid combo: Batsman:3, Bowler:3, AR:2, WK:1, Fillers: 2";
             this.$refs.myModalRef.show();
           }
         }
@@ -368,6 +451,11 @@
         for(var i=0;i<this.playersToDrop.length;i++)
         {
           var player = this.playersToDrop[i];
+          if(player.drafted==true)
+          {
+            alert("Cannot drop drafted player!!");
+            continue;
+          }
           this.form.team.splice(this.form.team.map(function(e) { return e.name; }).indexOf(player.name),1);
           this.players.push(player);
         }
@@ -395,11 +483,21 @@
 
       });
       //do something after mounting vue instance
-      let username = localStorage.getItem("username");
+      //let username = localStorage.getItem("username");
+      let username = this.username;
 
       API.get('usersApi',"/players").then(response=>{
-          this.players =response;
-          this.cachePlayers=response;
+          for(var i=0;i<response.length;i++)
+          {
+            if(response[i].drafted==false)
+            {
+              this.players.push(response[i]);
+              //console.log(this.players);
+              //this.cachePlayers.push(response[i]);
+              //this.cachePlayers=response;
+            }
+          }
+          //console.log(JSON.stringify(this.players));
           //alert(JSON.stringify(this.players));
       }).then(response=>{
         API.get('usersApi',"/userteams/"+username).then(response=>{
@@ -424,16 +522,24 @@
           for(var i=0;i<this.form.team.length;i++)
           {
             var player = this.form.team[i];
-            this.players.splice(this.players.map(function(e) { return e.name; }).indexOf(player.name),1);
-            this.cachePlayers=this.jsonCopy(this.players);
+            if(player.drafted!=true)
+            {
+              this.players.splice(this.players.map(function(e) { return e.name; }).indexOf(player.name),1);
+            }
             this.budget+=player.salary;
           }
+          this.cachePlayers=this.jsonCopy(this.players);
         }
+        this.isBusy=false;
       });
     }).then(response=>{
       API.get('usersApi',"/lockedteams/"+username).then((response)=>{
-        this.lockedTeam = response[response.length-1];
-        this.points = this.lockedTeam.points;
+        if(response.length>0){
+          this.lockedTeam = response[response.length-1];
+          this.points = this.lockedTeam.points;
+          this.phase = this.lockedTeam.phase;
+          this.previousLockedTime=this.lockedTeam.localtime;
+        }
       })
     });
     }

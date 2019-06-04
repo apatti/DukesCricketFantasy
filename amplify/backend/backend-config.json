@@ -35,6 +35,22 @@
         "usermatchpoints": {
             "service": "DynamoDB",
             "providerPlugin": "awscloudformation"
+        },
+        "livepoints": {
+            "service": "DynamoDB",
+            "providerPlugin": "awscloudformation"
+        },
+        "rules": {
+            "service": "DynamoDB",
+            "providerPlugin": "awscloudformation"
+        },
+        "transfers": {
+            "service": "DynamoDB",
+            "providerPlugin": "awscloudformation"
+        },
+        "transferresults": {
+            "service": "DynamoDB",
+            "providerPlugin": "awscloudformation"
         }
     },
     "function": {
@@ -148,6 +164,87 @@
                     ]
                 }
             ]
+        },
+        "teamcompositionapi": {
+            "service": "Lambda",
+            "providerPlugin": "awscloudformation",
+            "build": true,
+            "dependsOn": [
+                {
+                    "category": "storage",
+                    "resourceName": "userteamstable",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
+        },
+        "liveptsapi": {
+            "service": "Lambda",
+            "providerPlugin": "awscloudformation",
+            "build": true,
+            "dependsOn": [
+                {
+                    "category": "storage",
+                    "resourceName": "livepoints",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
+        },
+        "ruleapi": {
+            "service": "Lambda",
+            "providerPlugin": "awscloudformation",
+            "build": true,
+            "dependsOn": [
+                {
+                    "category": "storage",
+                    "resourceName": "rules",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
+        },
+        "pointsupdate": {
+            "service": "Lambda",
+            "providerPlugin": "awscloudformation",
+            "build": true,
+            "dependsOn": []
+        },
+        "playertransferapi": {
+            "service": "Lambda",
+            "providerPlugin": "awscloudformation",
+            "build": true,
+            "dependsOn": [
+                {
+                    "category": "storage",
+                    "resourceName": "transfers",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
+        },
+        "transferlistapi": {
+            "service": "Lambda",
+            "providerPlugin": "awscloudformation",
+            "build": true,
+            "dependsOn": [
+                {
+                    "category": "storage",
+                    "resourceName": "transferresults",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
         }
     },
     "api": {
@@ -214,6 +311,54 @@
                 {
                     "category": "function",
                     "resourceName": "usermatchpointsapi",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "teamcompositionapi",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "liveptsapi",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "ruleapi",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "pointsupdate",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "playertransferapi",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "transferlistapi",
                     "attributes": [
                         "Name",
                         "Arn"

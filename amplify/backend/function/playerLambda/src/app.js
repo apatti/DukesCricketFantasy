@@ -93,7 +93,21 @@ app.get(path, function(req, res) {
     if (err) {
       res.json({ error: "Could not load items: " + err });
     } else {
-      res.json(data.Items);
+      var availablePlayers = [];
+      let allPlayers = req.query.allPlayers;
+      if(allPlayers!=null)
+      {
+        res.json(data.Items);
+        return;
+      }
+      for(var i=0;i<data.Items.length;i++)
+      {
+        if(data.Items[i].drafted==false)
+        {
+          availablePlayers.push(data.Items[i]);
+        }
+      }
+      res.json(availablePlayers);
     }
   });
 });

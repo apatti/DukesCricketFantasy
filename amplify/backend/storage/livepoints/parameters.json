@@ -1,0 +1,5 @@
+{
+    "tableName": "livepoints",
+    "partitionKeyName": "username",
+    "partitionKeyType": "S"
+}

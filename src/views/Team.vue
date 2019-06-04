@@ -52,7 +52,7 @@
         c:"",
         vc:"",
         teamFields: [
-          {key:'name',sortable:true},
+          {key:'name',sortable:true,formatter:'captainCheck'},
           {key:'team',sortable:true},
           {key:'category',sortable:true},
           {key:'salary',sortable:true}
@@ -74,6 +74,30 @@
       //do something after creating vue instance
       this.username=this.$route.params.username;
     },
+    methods: {
+      matchCompare(a,b) {
+        if(a['#']>b['#']) return -1;
+        if(a['#']<b['#']) return 1;
+        return 0;
+      },
+      captainCheck(value) {
+        if(value==this.c)
+        {
+          if(value==this.vc)
+          {
+            return value + " (C/VC)";
+          }
+          else {
+            return value + " (C)";
+          }
+        }
+        if(value==this.vc) {
+          return value + " (VC)";
+        }
+
+        return value;
+      },
+    },
     mounted() {
       this.$root.$on('bv::collapse::state', (collapseId, isJustShown) => {
         if(!isJustShown)
@@ -87,6 +111,7 @@
       });
       //do something after mounting vue instance
       //let username = this.$route.params.username;
+      //let _this = this;
       API.get('usersApi',"/lockedteams/"+this.username).then(response =>{
         if(response.length!=0)
         {
@@ -108,10 +133,14 @@
         if(response.length!=0)
         {
           this.matchPoints=[];
+          let reg=/[a-z]+-vs-[a-z]+-match-(\d+)+/;
           for(var i=0;i<response.length;i++)
           {
+            var matchString = response[i].match;
+            var matchId=parseInt(matchString.match(reg)[1]);
+
             this.matchPoints.push({
-                "#":i+1,
+                "#":matchId,
                 "match":response[i].match,
                 "batting":response[i].points.batPoints,
                 "bowling":response[i].points.bowlPoints,
@@ -121,6 +150,7 @@
                 "captain":response[i].points.capPoints,
                 "vice-captain":response[i].points.vcPoints
             });
+            this.matchPoints.sort(this.matchCompare);
           }
         }
       });

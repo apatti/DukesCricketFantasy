@@ -3,10 +3,12 @@
     <b-table
     :items="matches"
     :fields="matchFields"
+    :busy="isBusy"
     striped small bordered caption-top>
-    <template slot="#" slot-scope="data">
-      {{ data.index + 1 }}
-    </template>
+    <div slot="table-busy" class="text-center text-danger my-2">
+        <b-spinner class="align-middle" />
+        <strong>Loading...</strong>
+    </div>
     <template slot="match" slot-scope="data">
       <b-button variant="link" v-b-toggle=data.value >{{data.value}}</b-button>
       <b-collapse :id=data.value class="mt-2">
@@ -28,6 +30,7 @@ export default{
   name:"MatchPoints",
   data(){
     return{
+      isBusy:true,
       matches:[],
       playerFields:[
         {key:'name',sortable:true},
@@ -43,15 +46,25 @@ export default{
       ]
     }
   },
+  methods: {
+    matchCompare(a,b) {
+      if(a['#']>b['#']) return -1;
+      if(a['#']<b['#']) return 1;
+      return 0;
+    }
+  },
   mounted() {
     //do something after mounting vue instance
     API.get('usersApi',"/matchpoints/").then(response =>{
       if(response.length!=0)
       {
         this.matches=[];
+        let reg=/[a-z]+-vs-[a-z]+-match-(\d+)+/;
         for(var i=0;i<response.length;i++)
         {
           var match = {};
+          var matchString = response[i].match;
+          match["#"]=parseInt(matchString.match(reg)[1]);
           match["match"]=response[i].match;
           match["players"]=[];
           for(const key in response[i].points)
@@ -68,6 +81,8 @@ export default{
           }
           this.matches.push(match);
         }
+        this.matches.sort(this.matchCompare);
+        this.isBusy=false;
       }
     });
   }

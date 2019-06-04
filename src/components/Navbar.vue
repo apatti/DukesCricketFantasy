@@ -10,7 +10,10 @@
           <b-nav-item to="players">Players</b-nav-item>
           <b-nav-item to="schedule">Schedule</b-nav-item>
           <b-nav-item to="managers">Team Managers</b-nav-item>
+          <b-nav-item to="livepoints">Live Points</b-nav-item>
           <b-nav-item to="matchpoints">Match Points</b-nav-item>
+          <b-nav-item to="allteams">All Teams</b-nav-item>
+          <b-nav-item to="transferresults">Player Transfers</b-nav-item>
           <b-nav-item to="rules">Rules</b-nav-item>
           <b-nav-item to="about">About</b-nav-item>
         </b-navbar-nav>

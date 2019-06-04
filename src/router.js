@@ -96,9 +96,33 @@ const router = new Router({
       meta: {requiresAuth: true}
     },
     {
+      path: '/livepoints',
+      name: 'livepoints',
+      component: () => import(/* webpackChunkName: "about" */ './views/LivePoints.vue'),
+      meta: {requiresAuth: true}
+    },
+    {
       path: '/matchpoints',
       name: 'matchpoints',
       component: () => import(/* webpackChunkName: "about" */ './views/MatchPoints.vue'),
+      meta: {requiresAuth: true}
+    },
+    {
+      path: '/allteams',
+      name: 'allteams',
+      component: () => import(/* webpackChunkName: "about" */ './views/AllTeams.vue'),
+      meta: {requiresAuth: true}
+    },
+    {
+      path: '/transfers',
+      name: 'transfers',
+      component: () => import(/* webpackChunkName: "about" */ './views/Transfers.vue'),
+      meta: {requiresAuth: true}
+    },
+    {
+      path: '/transferresults',
+      name: 'transferresults',
+      component: () => import(/* webpackChunkName: "about" */ './views/TransferResults.vue'),
       meta: {requiresAuth: true}
     },
     {

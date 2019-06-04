@@ -1,0 +1,5 @@
+{
+    "tableName": "rules",
+    "partitionKeyName": "tournament",
+    "partitionKeyType": "S"
+}
