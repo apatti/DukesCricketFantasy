@@ -20,7 +20,7 @@
           label="Pick the replacement player:"
           label-for="playerSelect"
           >
-          <b-form-select id="playerSelect" v-model="replacementPlayer">
+          <b-form-select id="playerSelect" v-model="replacementPlayer" @change="onReplacementSelected">
             <template slot="first">
               <option :value="null" disabled>-- Please select the replacement --</option>
             </template>
@@ -33,7 +33,7 @@
       <div>
         <b-form-group
         id="input-group-1"
-        label="Bid AMount:"
+        label="Bid Amount:"
         label-for="input-bidAmount"
         description="Please enter the bid amount.">
           <b-form-input
@@ -42,6 +42,20 @@
             type="number"
             required
             placeholder="Enter the bid amount">
+          </b-form-input>
+        </b-form-group>
+      </div>
+      <div>
+        <b-form-group
+        id="input-group-2"
+        label="Subs cost:"
+        label-for="input-subsCost"
+        description="Number of subs to give away.">
+          <b-form-input
+            id="input-subsCost"
+            v-model="replacementCost"
+            type="number"
+            disabled>
           </b-form-input>
         </b-form-group>
       </div>
@@ -64,6 +78,9 @@
         replacementPlayer:null,
         allPlayers:[],
         currentTeam:[],
+        lockedTeams:[],
+        replacePlayerOwners:[],
+        replacementCost:0,
         username:null
       }
     },
@@ -80,6 +97,7 @@
           "playerAdd":this.replacementPlayer,
           "bidAmount":this.bidAmount,
           "timestamp":timestamp,
+          "subs":this.replacementCost,
           "status":"Pending",
           "localtime":date.toString()
         }}).then(response=>{
@@ -97,6 +115,14 @@
       },
       onReset(evt){
         evt.preventDefault();
+      },
+      onReplacementSelected(){
+        var playerExistUsers = this.lockedTeams.filter(
+                                userTeam=>{
+                                  return (
+                                    userTeam.team.find(t=> t.name==this.replacementPlayer.name)!=undefined) &&
+                                    (userTeam.username!=this.username)});
+        this.replacementCost = playerExistUsers.length*2;
       },
       onDraftSelected(){
         let newPlayerBudget=this.currentTeam.reduce((a,b)=>{
@@ -166,6 +192,12 @@
               this.allPlayers.push(response[i]);
             }
           }
+      }).then(response=>{
+        API.get('usersApi',"/lockedteams").then((response)=>{
+          if(response.length>0){
+            this.lockedTeams= response;
+          }
+        });
       });
     }
   };

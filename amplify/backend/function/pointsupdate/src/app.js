@@ -50,11 +50,12 @@ app.get('/points/*', function(req, res) {
 * Example post method *
 ****************************/
 
-app.post('/points', function(req, res) {
+app.post('/points',  function(req, res) {
   // Add your code here
   console.log("Updating points for:"+req.body.match);
   let timestamp = req.body.timestamp;
-  //let points = req.body.points;
+  let playerPoints = req.body.points;
+  let matchTitle = req.body.match;
   let putItemParams = {
     TableName: 'matchpoints-iplfantasy',
     Item: req.body
@@ -76,7 +77,7 @@ app.post('/points', function(req, res) {
         ComparisonOperator: 'EQ'
       }
       condition['timestamp'] = {
-        ComparisonOperator: 'LTE',
+        ComparisonOperator: 'LE',
         AttributeValueList: [timestamp]
       }
       for(var i=0;i<users.length;i++)
@@ -91,14 +92,97 @@ app.post('/points', function(req, res) {
         }
         userTeams.push(dynamodb.query(queryItemParams).promise().then(function(data,err){
           var userData = data.Items[0];
-          return {"user":users[i],"team":userData.team,"c":userData.c,"vc":userData.vc};
-        }));
+          return {"user":userData.username,"team":userData.team,"c":userData.c,"vc":userData.vc};
+        }).catch(e=>{console.log("Error:"+e);res.json({error: e, url: req.url, body: req.body});}));
       }
-      Promise.all(userTeams).then(function(values){
-        
-      });
+      var userRetPoints=[];
+      Promise.all(userTeams).then(async function(values)
+      {
+        for(var i=0;i<values.length;i++)
+        {
+          //console.log(JSON.stringify(values[i]));
+          var userData = values[i];
+          var batPoints = 0;
+          var bowlPoints = 0;
+          var fieldPoints = 0;
+          var momPoints = 0;
+          var capPoints = 0;
+          var vcPoints = 0;
+          var totalPoints = 0;
+          for(var j=0;j<userData.team.length;j++)
+          {
+            var player = userData.team[j];
+            var name=player.name.trim().toLowerCase();
+            if(!playerPoints.hasOwnProperty(name))
+            {
+              continue;
+            }
+            var captain = userData.c.trim().toLowerCase();
+            var vc = userData.vc.trim().toLowerCase();
+            var multipler = 1;
+            if(name==captain)
+            {
+              multipler += 1;
+              capPoints=playerPoints[name]["totalpoints"];
+            }
+            if(name==vc)
+            {
+              multipler += 0.5;
+              vcPoints = playerPoints[name]["totalpoints"]*0.5;
+            }
+            batPoints   +=  playerPoints[name]["totalbat"];
+            bowlPoints  +=  playerPoints[name]["totalbowl"];
+            fieldPoints +=  playerPoints[name]["totalfield"];
+            momPoints   +=  playerPoints[name]["mom"];
 
-      res.json({success: 'post call succeed!', url: req.url, data: data})
+            totalPoints +=  playerPoints[name]["totalpoints"]*multipler;
+
+          }
+          let username = userData.user;
+          //console.log("Pushing for "+username);
+          userRetPoints.push({"name":username,"batPoints":batPoints,
+                              "bowlPoints":bowlPoints,"fieldPoints":fieldPoints,
+                              "capPoints":capPoints,"vcPoints":vcPoints,
+                              "momPoints":momPoints,"totalPoints":totalPoints});
+
+          var writeParams = {
+                          TableName: "usermatchpoints-iplfantasy",
+                          Item:{"username":username,
+                                "match":matchTitle,
+                                "points":{"batPoints":batPoints,"bowlPoints":bowlPoints,
+                                          "fieldPoints":fieldPoints,"momPoints":momPoints,
+                                          "capPoints":capPoints,"vcPoints":vcPoints,
+                                          "totalPoints":totalPoints}}
+                      };
+          var userMatchData = dynamodb.put(writeParams).promise();
+
+          var updateUserPointsParams = {
+                          TableName: "users-iplfantasy",
+                          Key:{
+                              "username": username,
+                              "league": "dukes"
+                          },
+                          UpdateExpression: "SET points = points + :updatedpoints, phase=phase + :updatedpoints, matchpoints=:updatedpoints",
+                          ExpressionAttributeValues:{
+                              ':updatedpoints': totalPoints
+                          }
+                      };
+
+          //var userMatchData = dynamodb.put(writeParams).promise();
+          var userPointsData = dynamodb.update(updateUserPointsParams).promise();
+          await userMatchData;
+          await userPointsData;
+        }
+        //console.log("User Points:"+userRetPoints);
+        var smsMessageParams = {
+          Message: "Scores updated for:\n"+matchTitle,
+          TopicArn: "arn:aws:sns:us-west-2:923271942752:ScoreUpdated"
+        };
+        await new AWS.SNS({apiVersion: '2010-03-31'}).publish(smsMessageParams).promise();
+        res.json({success: 'post call succeed!', url: req.url, data: userRetPoints});
+      }).catch(e=>{console.log("Error:"+e);res.json({error: e, url: req.url, body: req.body});});
+
+      //res.json({success: 'post call succeed!', url: req.url, data: data})
     }
   });
   //res.json({success: 'post call succeed!', url: req.url, body: req.body})

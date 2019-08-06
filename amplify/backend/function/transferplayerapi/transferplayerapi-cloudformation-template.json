@@ -28,12 +28,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"pointsupdate",
+						"transferplayerapi",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"pointsupdate",
+									"transferplayerapi",
 									"-",
 									{
 										"Ref": "env"
@@ -60,7 +60,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "dukesiplfantasy-20190318221259-deployment",
-					"S3Key": "amplify-builds/pointsupdate-1559779778-latest-build.zip"
+					"S3Key": "amplify-builds/transferplayerapi-1559895257-latest-build.zip"
 				}
 			}
 		},
@@ -70,12 +70,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"dukesiplfantasyLambdaRolec981e15f",
+						"dukesiplfantasyLambdaRoleffd639b1",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"dukesiplfantasyLambdaRolec981e15f",
+									"dukesiplfantasyLambdaRoleffd639b1",
 									"-",
 									{
 										"Ref": "env"

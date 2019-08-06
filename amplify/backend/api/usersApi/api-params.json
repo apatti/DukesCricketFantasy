@@ -97,6 +97,13 @@
             "privacy": {
                 "open": true
             }
+        },
+        {
+            "name": "/transferplayer",
+            "lambdaFunction": "transferplayerapi",
+            "privacy": {
+                "open": true
+            }
         }
     ],
     "resourceName": "usersApi",
@@ -143,6 +150,9 @@
         },
         {
             "lambdaFunction": "transferlistapi"
+        },
+        {
+            "lambdaFunction": "transferplayerapi"
         }
     ],
     "privacy": {
@@ -263,7 +273,15 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "transferplayerapi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
     ],
-    "uuid": "fcc96d43"
+    "uuid": "4b831f70"
 }

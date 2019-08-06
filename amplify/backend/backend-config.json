@@ -245,6 +245,12 @@
                     ]
                 }
             ]
+        },
+        "transferplayerapi": {
+            "service": "Lambda",
+            "providerPlugin": "awscloudformation",
+            "build": true,
+            "dependsOn": []
         }
     },
     "api": {
@@ -359,6 +365,14 @@
                 {
                     "category": "function",
                     "resourceName": "transferlistapi",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "transferplayerapi",
                     "attributes": [
                         "Name",
                         "Arn"

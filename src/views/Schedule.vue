@@ -1,6 +1,9 @@
 <template>
   <div>
     <b-table striped bordered hover :items="scheduleJson" :fields="fields" >
+      <template slot="title" slot-scope="data">
+        <b-link :href="data.item.matchlink" target="_blank">{{data.value}}</b-link>
+      </template>
     </b-table>
   </div>
 </template>
@@ -13,11 +16,11 @@
     data(){
       return{
         fields: [
-          {key:'Match',sortable:true},
-          'Date',
-          {key:'Home',sortable:true},
-          {key:'Away',sortable:true},
-          {key:'Venue',sortable:true}],
+          {key:'match',sortable:true},
+          {key:'timestamp',sortable:true,label:'Date'},
+          {key:'title',sortable:true,label:'Match Details'},
+          {key:'venue',sortable:true},
+          {key:'time',sortable:true}],
         scheduleJson
       }
     }
